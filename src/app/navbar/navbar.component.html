@@ -1,0 +1,14 @@
+<h1>Navvar</h1>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active current"><a routerLink="/posts">Posts</a></li>
+        <li routerLinkActive="active current"><a routerLink="/new-course-form">new-course-form</a></li>
+        <li routerLinkActive="active current"><a routerLink="/github-followers"
+          [queryParams]="{ page: 1, order: 'newest'}">github-followers</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

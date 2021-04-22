@@ -1,0 +1,41 @@
+<h1>Angular</h1>
+<span class="glyphicon glyphicon-star"></span>
+<!--courses></courses-->
+
+<!--contact-form></contact-form-->
+
+<!-- authors></authors -->
+<h1>|<favorite></favorite>|</h1>
+
+<input type="text" [(ngModel)]="title">
+<br>
+{{ title | titleCase }} 
+
+<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
+<!-- favorite [isFavorite]="post.isFavorite"></favorite -->
+
+<bootstrap-panel>
+    <ng-container class="heading">Heading</ng-container>
+    <div class="body">
+        <h2>Body</h2>
+        <p>Some content here ...</p>
+    </div>
+</bootstrap-panel>
+
+
+<like>
+    [likesCount]="tweet.likesCount"
+    [isActive]="tweet.isLiked"
+</like>
+
+<zippy title="Shipping Details">
+    Shipping Details Content
+</zippy>
+
+<new-course-form> </new-course-form>
+
+<!-- change-password>
+</change-password  -->
+
+
+<posts></posts>

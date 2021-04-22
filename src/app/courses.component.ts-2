@@ -1,0 +1,66 @@
+import { Component } from '@angular/core';
+import { CoursesService } from './courses.service';
+import { AuthorsService } from './authors.service';
+
+@Component({
+    selector: 'courses',
+    template: `
+        <h2>{{ "Title: " +  title }}</h2>
+        <h2>{{ getTitle() }}</h2>
+        <h3 [textContent]="title"></h3>
+        <ul>
+            <li *ngFor="let course of courses">
+                {{ course }}
+            </li>
+        </ul>
+        <img src="{{ imageUrl }}" />
+        <img [src]="imageUrl" />
+        <table>
+            <tr>
+                <td [attr.colspan]="colSpan"></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" [class.active]="isActive">Save</button>
+        <button [style.backgroundColor]="isActive? 'blue' : 'white'">Save</button>
+        <div (click)="onDivClicked()">
+        <button class="btn btn-primary" (click)="onSave($event)">Click me</button>
+        </div>
+        
+        <input [value]="email0" (keyup.enter)="onKeyUp()" />
+        <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
+    `
+
+})
+export class CoursesComponent {
+    title = "List of courses";
+    courses;
+
+    constructor(service: AuthorsService) {
+        this.courses = service.getAuthors();
+    }
+
+    getTitle() {
+        return this.title;
+    }
+
+    imageUrl = "https://th.bing.com/th/id/R29bb8f17a7162169ab11a8fc3a68c15e?rik=uls%2b4dGwV%2f87Iw&riu=http%3a%2f%2fimg02.tooopen.com%2fimages%2f20150302%2ftooopen_sl_111691051541.jpg&ehk=sNUK8P3%2bfyMtEWn25asi0UJAjJJWFPAX5VIPJ4l1FEs%3d&risl=&pid=ImgRaw";
+    colSpan=2;
+    isActive = false;
+
+    onSave($event: any) {
+        $event.stopPropagation();
+        console.log("Button was clicked.", $event);
+    }
+    onDivClicked() {
+        console.log("Div was clicked.")
+    }
+
+    email0 = "my@example.com";
+    email = "my@example.com";
+
+
+
+    onKeyUp() {
+        console.log(this.email);
+    }
+}
